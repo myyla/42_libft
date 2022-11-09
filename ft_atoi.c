@@ -6,7 +6,7 @@
 /*   By: amtouham <amtouham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 22:30:17 by amtouham          #+#    #+#             */
-/*   Updated: 2022/11/07 10:57:11 by amtouham         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:09:48 by amtouham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	ft_atoi(const char *str)
 	res = 0;
 	
 	//---------IF WHITESPACES THEN IGNORE
-	while((str[i] > 8 && str[i] < 14) || str[i] == 32 || str[i] == 127)
+	while((str[i] > 8 && str[i] < 14) || str[i] == 32)
 		i++;
+		
 		
 	//---------SIGN OF NUMBER
 	// if (str[i] == '-')
