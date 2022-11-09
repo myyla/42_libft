@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amtouham <amtouham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 21:09:50 by amtouham          #+#    #+#             */
-/*   Updated: 2022/11/08 16:17:13 by amtouham         ###   ########.fr       */
+/*   Created: 2022/11/05 22:25:17 by amtouham          #+#    #+#             */
+/*   Updated: 2022/11/07 06:29:02 by amtouham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int c)
+void	ft_bzero(void *s, size_t n)
 {
-    if(c >= 0 && c <= 127 )
-        return (1);
-    else 
-        return (0);
+	ft_memset(s, 0, n);
 }
