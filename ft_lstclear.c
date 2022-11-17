@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amtouham <amtouham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 20:08:47 by amtouham          #+#    #+#             */
-/*   Updated: 2022/11/12 13:52:47 by amtouham         ###   ########.fr       */
+/*   Created: 2022/11/11 22:21:59 by amtouham          #+#    #+#             */
+/*   Updated: 2022/11/11 22:42:56 by amtouham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	char		*pdst;
-	const char	*psrc;
-
-	if (src < dst)
+	t_list *temp;
+	
+	temp =lst;
+	ft_lstdelone(lst,del);
+	while(temp)
 	{
-		psrc = src + len - 1;
-		pdst = dst + len - 1;
-		while (len-- > 0)
-			*(pdst--) = *(psrc--);
-		return (dst);
+		temp = temp->next;
+		ft_lstdelone(*lst,del);
 	}
-	if(src > dst)
-		ft_memcpy(dst, src, len);
-	return (dst);
+}
+
+void	del(void *c)
+{
+	free(c);
+}
+
+int main()
+{
+	t1 = ft_lstnew("myla");
+	t2 = ft_lstnew("marigold");
+	t3 = ft_lstnew("amal");
+	t4 = ft_lstnew("same");
+	ft_lstadd_back(*t1,t2);
+	ft_lstadd_back(*t2,t2);
+	ft_lstadd_back(*t1,t2);
 }

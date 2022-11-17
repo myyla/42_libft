@@ -1,59 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amtouham <amtouham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 12:41:53 by amtouham          #+#    #+#             */
-/*   Updated: 2022/11/10 03:22:03 by amtouham         ###   ########.fr       */
+/*   Created: 2022/11/09 22:59:39 by amtouham          #+#    #+#             */
+/*   Updated: 2022/11/10 03:05:28 by amtouham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	lenofint(long c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
-
-	i = 0;
-	if (c < 0)
-		i++;
-	if (c == 0)
-		i++;
-	while (c != 0)
-	{
-		c /= 10;
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int		len;
 	int		i;
-	long	x;
+	char	*new;
 
 	i = 0;
-	x = n;
-	len = lenofint(n);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	if (x < 0)
+	if (!s || !f)
+		return (NULL);
+	new = (char *)malloc(ft_strlen(s) + 1);
+	if (!new)
+		return (NULL);
+	while (s[i])
 	{
-		str[0] = '-';
-		i = 1;
-		x *= (-1);
+		new[i] = f(i, s[i]);
+		i++;
 	}
-	str[len] = '\0';
-	while (len > i)
-	{
-		len--;
-		str[len] = (x % 10) + 48;
-		x /= 10;
-	}
-	return (str);
+	new[i] = '\0';
+	return (new);
 }
