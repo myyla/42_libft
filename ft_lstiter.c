@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amtouham <amtouham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:03:54 by amtouham          #+#    #+#             */
-/*   Updated: 2022/12/02 04:31:09 by amtouham         ###   ########.fr       */
+/*   Created: 2022/12/02 19:15:21 by amtouham          #+#    #+#             */
+/*   Updated: 2022/12/03 13:04:06 by amtouham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *hay, const char *ndl, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*tmp;
 
-	i = 0;
-	j = 0;
-	if (ndl[j] == '\0')
-		return ((char *)hay);
-	while (i < len && hay[i])
+	if (!lst || !f)
+		return ;
+	tmp = lst;
+	while (tmp)
 	{
-		j = 0;
-		while (hay[i + j] == ndl[j] && i + j < len)
-		{
-			if (!ndl[j + 1])
-				return ((char *)&hay[i]);
-			j++;
-		}
-		i++;
+		f(tmp->content);
+		tmp = tmp->next;
 	}
-	return (0);
 }
